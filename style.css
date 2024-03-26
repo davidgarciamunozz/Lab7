@@ -1,0 +1,63 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color:rgb(232, 232, 232);
+}
+
+#task-list {
+    margin-bottom: 20px;
+    width:30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: solid; */
+}
+
+.task {
+    margin-bottom: 10px;
+    background-color: white;
+    height: 2.5rem; 
+    border-radius: .6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem;
+}
+
+.task input[type="checkbox"] {
+    display: none; /* Oculta el checkbox predeterminado */
+}
+
+.task input[type="checkbox"] {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 50%; /* Hace que el checkbox personalizado sea redondo */
+    cursor: pointer;
+}
+
+.task input[type="checkbox"]:checked{
+    background-color: green; /* Cambia el color de fondo cuando está marcado */
+}
