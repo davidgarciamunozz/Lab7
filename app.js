@@ -1,31 +1,22 @@
 // Definición de tareas // estados
-const tasks = [
-    { name: "Hacer la compra", completed: false },
-    { name: "Estudiar para el examen", completed: true },
-    { name: "Llamar al cliente", completed: false },
-    { name: "Preparar la presentación", completed: false },
-    { name: "Ir al gimnasio", completed: true },
-    { name: "Terminar el informe", completed: false },
-    { name: "Limpiar la casa", completed: true },
-    { name: "Resolver los bugs del software", completed: false },
-    { name: "Enviar el correo electrónico", completed: false },
-    { name: "Organizar el armario", completed: true }
-];
+const tasksList = localStorage.getItem('tasks');
+const tasksApp = JSON.parse(tasksList);
+console.log(tasksApp);
 
 // Función para agregar las tareas al DOM
-function renderTasks() {
-    const taskList = document.getElementById("task-list");
-    taskList.innerHTML = "";
+export function renderTasks() {
+    const taskListApp = document.getElementById("task-list");
+    taskListApp.innerHTML = "";
 
     let completedTasks = 0;
-    tasks.sort((a, b) => {
+    tasksApp.sort((a, b) => {
         if (a.completed && !b.completed) return 1;
         if (!a.completed && b.completed) return -1;
         return 0;
     });
 
 
-    tasks.forEach((task, index) => {
+    tasksApp.forEach((task, index) => {
         const taskItem = document.createElement("div");
         taskItem.classList.add("task");
         const taskName = document.createElement("span");
@@ -34,12 +25,12 @@ function renderTasks() {
         checkbox.type = "checkbox";
         checkbox.checked = task.completed;
         checkbox.addEventListener("change", () => {
-            tasks[index].completed = !tasks[index].completed;
+            tasksApp[index].completed = !tasksApp[index].completed;
             renderTasks();
         });
         taskItem.appendChild(taskName);
         taskItem.appendChild(checkbox); // Colocar el checkbox después del span
-        taskList.appendChild(taskItem);
+        taskListApp.appendChild(taskItem);
 
         if (task.completed) {
             completedTasks++;
@@ -56,8 +47,28 @@ function renderTasks() {
     const completedTasksCount = document.getElementById("completed-tasks");
     completedTasksCount.textContent = completedTasks;
     const pendingTasksCount = document.getElementById("pending-tasks");
-    pendingTasksCount.textContent = tasks.length - completedTasks;
+    pendingTasksCount.textContent = tasksApp.length - completedTasks;
 }
 
-// Inicializar la aplicación
+
+// Función para obtener la lista de tareas
+export const obtenerTareas = () => {
+    const tasksList = localStorage.getItem(taskKey);
+    if (!tasksList) {
+        return [];
+    }
+    return JSON.parse(tasksList);
+};
+// // // Inicializar la aplicación
 renderTasks();
+
+// // Función para renderizar las tareas y actualizar la página cada cierto intervalo de tiempo
+// function actualizarPagina() {
+//     renderTasks();
+//     setTimeout(actualizarPagina, 1000); // Actualizar cada 5 segundos (puedes ajustar este valor según tus necesidades)
+// }
+
+// // Llamar a la función para que comience a actualizar la página automáticamente
+// actualizarPagina();
+
+
