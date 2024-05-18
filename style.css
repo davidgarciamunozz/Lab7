@@ -17,12 +17,15 @@ header {
     color: #fff;
     padding: 20px;
     text-align: center;
+    height: 10vh;
 }
 
 main {
     padding: 20px;
     display: flex;
+    height: 100%;
     flex-direction: column;
+    height: 90vh;
     align-items: center;
     background-color:rgb(232, 232, 232);
 }

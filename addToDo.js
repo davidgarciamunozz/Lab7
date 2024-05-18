@@ -14,6 +14,7 @@ form.addEventListener('submit', (e) => {
         constructor(name) {
             this.name = name;
             this.completed = false;
+            this.id = new Date().getTime();
         }
     }
 
