@@ -7,6 +7,8 @@ console.log(tasksApp);
 export function renderTasks() {
     const taskListApp = document.getElementById("task-list");
     taskListApp.innerHTML = "";
+    const tasksList = localStorage.getItem('tasks');
+    const tasksApp = JSON.parse(tasksList);
 
     let completedTasks = 0;
     tasksApp.sort((a, b) => {
@@ -26,6 +28,7 @@ export function renderTasks() {
         checkbox.checked = task.completed;
         checkbox.addEventListener("change", () => {
             tasksApp[index].completed = !tasksApp[index].completed;
+            localStorage.setItem('tasks', JSON.stringify(tasksApp));
             renderTasks();
         });
         taskItem.appendChild(taskName);
@@ -60,15 +63,13 @@ export const obtenerTareas = () => {
     return JSON.parse(tasksList);
 };
 // // // Inicializar la aplicación
+function actualizarPagina() {
+    renderTasks();
+}
+setInterval(actualizarPagina, 1000);
+
 renderTasks();
 
-// // Función para renderizar las tareas y actualizar la página cada cierto intervalo de tiempo
-// function actualizarPagina() {
-//     renderTasks();
-//     setTimeout(actualizarPagina, 1000); // Actualizar cada 5 segundos (puedes ajustar este valor según tus necesidades)
-// }
 
-// // Llamar a la función para que comience a actualizar la página automáticamente
-// actualizarPagina();
 
 

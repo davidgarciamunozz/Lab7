@@ -32,7 +32,7 @@ main {
 
 #task-list {
     margin-bottom: 20px;
-    width:30%;
+    width:450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -48,6 +48,7 @@ main {
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
+    min-width: 450px;
 }
 
 .task input[type="checkbox"] {

@@ -45,6 +45,7 @@ form.addEventListener('submit', (e) => {
     // Limpiar el campo de entrada y mostrar un mensaje de éxito
     taskInput.value = '';
     alert('Tarea agregada');
+    console.log(toDoList);
 });
 
 // Función para obtener la lista de tareas
@@ -55,5 +56,7 @@ export const obtenerTareas = () => {
     }
     return JSON.parse(tasksList);
 };
-console.log(obtenerTareas());
+
+
+
 
